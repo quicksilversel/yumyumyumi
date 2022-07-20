@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Yumi Recipe</title>
+    <!-- bootstrap -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- js -->
+    <script type="text/javascript" src="scripts/jquery-3.5.1.min.js"></script>    
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <!-- css -->
+    <link href="css/style.css" type="text/css", rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- filter table -->
+    <h1 class="text-center" id="header">Recipes</h1>
+    <div class="text-center filter">
+        <!-- search bar -->
+        <input id="searchRecipe" type="text" placeholder="検索">
+        <!-- filter 1 -->
+        <div class="row my-4">
+            <div class="col">
+                <div class="condition">
+                    <a data-id="和食" data-type="country" class="stat country" role="button">#和食</a>
+                    <a data-id="イタリアン" data-type="country" class="stat country" role="button">#イタリアン</a>
+                    <a data-id="おもてなし" data-type="country" class="stat country" role="button">#おもてなし</a>
+                </div>
+            </div>
+        </div>
+        <!-- filter 2 -->
+        <div class="row my-4">
+            <div class="col">
+                <div class="condition">
+                    <a data-id="じゃがいも" data-type="ingredients" class="stat ingredients" role="button">#じゃがいも</a>
+                    <a data-id="ズッキーニ" data-type="ingredients" class="stat ingredients" role="button">#ズッキーニ</a>
+                    <a data-id="豚肉" data-type="ingredients" class="stat ingredients" role="button">#豚肉</a>
+                    <a data-id="人参" data-type="ingredients" class="stat ingredients" role="button">#人参</a>
+                    <a data-id="豆腐" data-type="ingredients" class="stat ingredients" role="button">#豆腐</a>
+                    <a data-id="たまご" data-type="ingredients" class="stat ingredients" role="button">#たまご</a>
+                </div>
+            </div>
+        </div>
+        <!-- filter 3 -->
+        <div class="row my-4">
+            <div class="col">
+                <div class="condition">
+                    <a data-id="時短" data-type="time" class="stat rating" role="button">#時短</a>
+                    <a data-id="冷凍可能" data-type="time" class="stat rating" role="button">#冷凍可能</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- results -->
+    <div class="container mb-2">
+        <div class="cards"></div>
+    </div>
+    <script src="scripts/spreadsheet.js"></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+:root {
+	--background: #f6f6f6;
+	--card: #fff;
+    --border: #cccccc;
+    --table-header : #e6e6e6;
+	--primary-text: #000000;
+    --secondary-text: #212121;
+    --accent: #0275d8;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f6f6f6;
+    color: black;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* header */
+
+#header {
+    margin-top: 2%;
+    margin-bottom : 2%;
+    font-family: "Yantramanav", sans-serif;
+    text-transform: uppercase;
+    font-size: 50px;
+}
+
+/* filter bar */
+
+.filter {
+    text-transform: capitalize;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+.filter a {
+    background-color: #FFFFFF;
+    border: 1px solid #FFF5EE;
+    border-radius: 2px;
+    color: #222222;
+    cursor: pointer;
+    font-weight: 400;
+    outline: none;
+    padding: 8px 23px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.filter a:hover {
+    border-color: #000000;
+    color: black;
+}
+
+.filter a:focus-visible {
+    box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+    transition: box-shadow .2s;
+}
+
+.filter a.active {
+    border-color: #000000;
+    transform: scale(.96);
+    cursor: pointer;
+}
+
+/* cards */
+.cards a.btn {
+    background: var(--accent);
+    border-radius: 4px;
+    box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.25);
+    color: var(--primary-text);
+    display: inline-block;
+    padding: 6px 30px 8px;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.1s 0s ease-out;
+}
+.cards .no-touch a.btn:hover {
+    background: var(--accent);
+    box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
+    transform: translateY(-2px);
+    transition: all 0.25s 0s ease-out;
+}
+.cards .no-touch a.btn:active, .cards a.btn:active {
+    background: var(--accent);
+    box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.25);
+    transform: translate3d(0, 1px, 0);
+    transition: all 0.025s 0s ease-out;
+}
+
+div.cards {
+    margin: 40px auto;
+    max-width: 960px;
+    text-align: center;
+    color: var(--primary-text);
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.cards .card {
+    background: var(--card);
+    display: inline-block;
+    margin: 8px;
+    max-width: 300px;
+    perspective: 1000;
+    position: relative;
+    text-align: left;
+    transition: all 0.3s 0s ease-in;
+    width: 300px;
+    z-index: 1;
+}
+.cards .card img {
+    max-width: 300px;
+}
+.cards .card .card__image-holder {
+    height: 0;
+    padding-bottom: 75%;
+}
+.cards .card div.card-title {
+    background: var(--card);
+    padding: 6px 15px 10px;
+    position: relative;
+    z-index: 0;
+}
+.cards .card div.card-title a.toggle-info {
+    border-radius: 32px;
+    height: 32px;
+    padding: 0;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 32px;
+}
+.cards .card div.card-title a.toggle-info span {
+    background: var(--card);
+    display: block;
+    height: 2px;
+    position: absolute;
+    top: 16px;
+    transition: all 0.15s 0s ease-out;
+    width: 12px;
+}
+.cards .card div.card-title a.toggle-info span.left {
+    right: 13px;
+    transform: rotate(45deg);
+}
+.cards .card div.card-title a.toggle-info span.right {
+    left: 13px;
+    transform: rotate(-45deg);
+    }
+.cards div.card div.card-title h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+.cards div.card div.card-title h2 small {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.cards div.card div.card-description {
+    padding: 0 15px 10px;
+    position: relative;
+    font-size: 14px;
+}
+.cards div.card div.card-actions {
+    box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);
+    padding: 10px 15px 20px;
+    text-align: center;
+}
+.cards  div.card div.card-flap {
+    background: var(--card);
+    position: absolute;
+    width: 100%;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+}
+.cards div.card div.flap1 {
+    transition: all 0.3s 0.3s ease-out;
+    z-index: -1;
+}
+.cards div.card div.flap2 {
+    transition: all 0.3s 0s ease-out;
+    z-index: -2;
+}
+div.cards.showing div.card {
+    cursor: pointer;
+    opacity: 0.6;
+    transform: scale(0.88);
+}
+.no-touch div.cards.showing div.card:hover {
+    opacity: 0.94;
+    transform: scale(0.92);
+}
+.cards div.card.show {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+.cards div.card.show .card-description {
+    overflow-y: auto;
+    height: 300px;
+}
+.cards div.card.show div.card-title a.toggle-info {
+    background: #ff6666 !important;
+}
+.cards div.card.show div.card-title a.toggle-info span {
+    top: 15px;
+}
+.cards div.card.show div.card-title a.toggle-info span.left {
+    right: 9px;
+}
+.cards div.card.show div.card-title a.toggle-info span.right {
+    left: 9px;
+}
+.cards div.card.show div.card-flap {
+    background: var(--card);
+    transform: rotateX(0deg);
+}
+.cards div.card.show div.flap1 {
+    transition: all 0.3s 0s ease-out;
+}
+.cards div.card.show div.flap2 {
+    transition: all 0.3s 0.2s ease-out;
+}
