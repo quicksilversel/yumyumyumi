@@ -1,4 +1,4 @@
-const sheetId = '12CsMGAgYtUda54FL2OVm8nNiF_suZU0BPf1efY0eDV8';
+const sheetId = '1TmlxsBkGr_iWww1AeU8Xgq2fqWRDJky4AD56FumlfFI';
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
 const sheetName = 'filter-recipe';
 const query = encodeURIComponent('Select *')
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', init)
  
 const cards = document.querySelector('.cards')
 
+// fetch data from google sheets
 function init() {
     fetch(url)
         .then(res => res.text())
@@ -41,12 +42,42 @@ function init() {
             processRows(data);
         })
 }
-  
+
+// get all categories from spreadsheet and dynamically add to page 
+function addCategories(categories){
+    categories = categories.flat();
+    categories = [...new Set(categories)];
+	for (var i = 0, len = categories.length; i < len; i++) {
+        $(".condition#categories").append(`
+            <button data-id="${categories[i]}" data-type="category" class="stat category my-1" role="button">#${categories[i]}</button>
+        `)
+    }
+
+}
+
+// preserve line break from cells
+function lineBreak(text){
+    text = text.replace(/\n/g, '<br>');
+    return text;
+}
+
+// dynamically add recipes to page
 function processRows(json) {
-   // insert to table
+
+    // list of all categories
+    categories = [];
+    
 	for (var i = 0, len = data.length; i < len; i++) {
+
+        ingredient = lineBreak(data[i].ingredient);
+        recipe = lineBreak(data[i].recipe);
+        point = lineBreak(data[i].point);
+        category = data[i].category.split(",");
+        categories.push(category)
+
+        // insert recipe to page
 		$(".cards").append(
-        `<div class="card" data-country="${data[i].country}" data-ingredients="${data[i].ingredients}" data-time="${data[i].time}">
+        `<div class="card" data-category="${data[i].category}">
             <div class="card__image-holder">
                 <img class="card__image" src="${data[i].image}" alt="Card image cap"> 
             </div>
@@ -57,15 +88,30 @@ function processRows(json) {
                 </a>
                 <h2>
                     ${data[i].title}
-                    <small class="mt-2">${data[i].time}<small>
                 </h2>
+                <small class="mt-2">${data[i].time}<small>
+                <p class="summary mt-1">
+                    ${data[i].summary}
+                </p>
             </div>
             <div class="card-flap flap1">
-                <div class="card-description">
-                    ${data[i].recipe}
+                <h3 style="border:none;">参考：${data[i].source}</h3>
+                <h3>材料</h3>
+                <div class="card-description ingredient">
+                    ${ingredient}
+                </div>
+                <h3>レシピ</h3>
+                <div class="card-description recipe">
+                    ${recipe}
+                </div>
+                <h3>ポイント</h3>
+                <div class="card-description point">
+                    ${point}
                 </div>
             </div>
         </div>`
         )
 	};
+    // add category to filters
+    addCategories(categories);
 }

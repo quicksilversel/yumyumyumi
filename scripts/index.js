@@ -9,12 +9,12 @@ $(document).ready(function() {
 	});
 
 	// filter 
-	$('.stat').on('click', function() {
+	$('.condition').on('click', '.stat', function() {
 		$(this).toggleClass('active');
 		var $stats = $('.condition .active')
 		var $items = $('.cards .card');
 
-		/* AND logic */
+		/* filter items that contain specific substring */
 		$items.show();
 		if ($stats.length == 0)
 		return;
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		$stats.each(function() {
 		var $stat = $(this);
 		$items.filter(function() {
-			return $(this).data($stat.data('type')) != $stat.data('id');
+			return $(this).data($stat.data('type')).indexOf($stat.data('id')) < 0;
 		}).hide();
 		}); 
 	});
