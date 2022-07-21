@@ -23,27 +23,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- filter table -->
-    <div class="container">
-        <a href="./index.html">
-            <h1 class="text-center" id="header">Yum Yum Yumi</h1>
-        </a>        
-        <div class="text-center filter">
-            <!-- search bar -->
-            <input id="searchRecipe" type="text" placeholder="検索">
-            <!-- filters -->
-            <div class="row mt-4">
-                <div class="col">
-                    <div class="condition" id="categories">
-                    </div>
+    <a href="./index.html">
+        <h1 class="text-center" id="header">Yum Yum Yumi</h1>
+    </a>
+    <!-- recipe -->
+    <div class="container recipe-wrapper p-4 mb-4">
+        <h2 class="recipe-title text-center"></h2>
+        <div class="row text-center p-1 recipe-details-wrapper">
+            <div class="col-lg-4 col-xs-12">
+                <p class="recipe-time text-center"></p>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <p class="recipe-category text-center"></p>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <p class="recipe-source text-center"></p>
+            </div>
+        </div>
+        <div class="row recipe-description pt-4">
+            <div class="col-lg-4 col-xs-12 recipe-description-left">
+                <div class="recipe-image text-center p-2"></div>
+                <div class="recipe-ingredients-wrapper pl-lg-3">
+                    <h3>材料</h3>
+                    <p class="recipe-ingredients"></p>
+                </div>
+            </div>
+            <div class="col-lg-8 col-xs-12 recipe-description-right">
+                <div class="recipe-summary-wrapper mt-xs-4">
+                    <h3>一言</h3>
+                    <p class="recipe-summary"></p>
+                </div>
+                <div class="recipe-content-wrapper mt-4">
+                    <h3>作り方</h3>
+                    <p class="recipe-content"></p>
+                </div>
+                <div class="recipe-point-wrapper mt-4">
+                    <h3>ポイント</h3>
+                    <p class="recipe-point"></p>
                 </div>
             </div>
         </div>
-        <!-- results -->
-        <div class="container mb-2">
-            <div class="cards"></div>
-        </div>
     </div>
-    <script src="scripts/spreadsheet.js"></script>
+    <script src="scripts/recipe.js"></script>
 </body>
 </html>

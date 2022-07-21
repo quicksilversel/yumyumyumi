@@ -1,6 +1,6 @@
 const sheetId = '1TmlxsBkGr_iWww1AeU8Xgq2fqWRDJky4AD56FumlfFI';
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?`;
-const sheetName = 'filter-recipe';
+const sheetName = 'yumi-recipe';
 const query = encodeURIComponent('Select *')
 const url = `${base}&sheet=${sheetName}&tq=${query}`
  
@@ -16,7 +16,7 @@ function init() {
         .then(rep => {
             //Remove additional text and extract only JSON:
             const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
-            console.log(rep)
+            // console.log(rep)
  
             const colz = [];
             const tr = document.createElement('tr');
@@ -61,6 +61,17 @@ function lineBreak(text){
     return text;
 }
 
+// replace "," with "#" for categories
+function processCategories(text){
+    var categories = [];
+    categories = text.split(",");
+    var result = "";
+    for (var i = 0, len = categories.length; i < len; i++) {
+        result = result + "#" + categories[i] + " ";
+    }
+    return result;
+}
+
 // dynamically add recipes to page
 function processRows(json) {
 
@@ -75,6 +86,8 @@ function processRows(json) {
         category = data[i].category.split(",");
         categories.push(category)
 
+        hastags = processCategories(data[i].category)
+
         // insert recipe to page
 		$(".cards").append(
         `<div class="card" data-category="${data[i].category}">
@@ -86,27 +99,22 @@ function processRows(json) {
                     <span class="left"></span>
                     <span class="right"></span>
                 </a>
-                <h2>
+                <h2 class="mt-1">
                     ${data[i].title}
                 </h2>
                 <small class="mt-2">${data[i].time}<small>
+                <p class="hashtags mt-1">
+                    ${hastags}
+                </p>
                 <p class="summary mt-1">
                     ${data[i].summary}
                 </p>
+                <a href="recipe.html?id=${data[i].id}" class="recipeLink mt-2">レシピを見る</a>
             </div>
             <div class="card-flap flap1">
-                <h3 style="border:none;">参考：${data[i].source}</h3>
                 <h3>材料</h3>
                 <div class="card-description ingredient">
                     ${ingredient}
-                </div>
-                <h3>レシピ</h3>
-                <div class="card-description recipe">
-                    ${recipe}
-                </div>
-                <h3>ポイント</h3>
-                <div class="card-description point">
-                    ${point}
                 </div>
             </div>
         </div>`

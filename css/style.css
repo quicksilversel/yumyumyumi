@@ -22,6 +22,7 @@ a {
 
 a:hover {
     text-decoration: none;
+    color: var(--primary-text)
 }
 
 /* header */
@@ -115,7 +116,6 @@ div.cards {
     max-width: 960px;
     text-align: center;
     color: var(--primary-text);
-    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .cards .card {
@@ -192,9 +192,40 @@ div.cards {
 .cards div.card div.card-title small {
     display: block;
     font-size: 12px;
-    font-weight: 600;
     letter-spacing: -0.025em;
 }
+
+.cards div.card .recipeLink {
+    background-color: var(--accent);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+.cards div.card .recipeLink:hover {
+  background-color: rgb(2, 116, 216, .8)
+}
+
 .cards div.card div.card-description {
     padding: 0 15px 10px;
     position: relative;
@@ -279,4 +310,44 @@ div.cards.showing div.card {
 }
 .cards div.card.show div.flap2 {
     transition: all 0.3s 0.2s ease-out;
+}
+
+/************** RECIPE PAGE **************/
+
+.recipe-wrapper {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--card);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.recipe-wrapper .recipe-title {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.recipe-details-wrapper {
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.recipe-image img {
+    width: 300px;
+    height: 225px;
+    overflow: hidden;
+}
+
+.recipe-description h3 {
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 5px;
+    margin-bottom: 1rem;
+}
+
+.recipe-description p {
+    font-size: 13px;
+    margin: 5px;
+}
+
+.recipe-description-left {
+    border-right: 1px solid var(--border);
 }

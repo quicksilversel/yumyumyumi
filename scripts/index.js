@@ -30,12 +30,11 @@ $(document).ready(function() {
 	// cards
 	var zindex = 10;
   
-  	$("div.cards").on("click", "div.card", function(e){
+  	$("div.cards").on("click", ".toggle-info", function(e){
 		e.preventDefault();
-
 		var isShowing = false;
 
-		if ($(this).hasClass("show")) {
+		if ($(this).parent().parent().hasClass("show")) {
 			isShowing = true
 		}
 
@@ -43,24 +42,22 @@ $(document).ready(function() {
 			// a card is already in view
 			$("div.card.show").removeClass("show");
 			if (isShowing) {
-				// this card was showing - reset the grid
+				// hide card
 				$("div.cards").removeClass("showing");
 			} 
 			else {
-				// this card isn't showing - get in with it
-				$(this).css({zIndex: zindex}).addClass("show");
+				// show card
+				$(this).parent().parent().css({zIndex: zindex}).addClass("show");
 			}
 
 			zindex++;
-
 		} 
 		else {
 			// no cards in view
 			$("div.cards").addClass("showing");
-			$(this).css({zIndex:zindex}).addClass("show");
+			$(this).parent().parent().css({zIndex:zindex}).addClass("show");
 
 			zindex++;
-
 		}
   	});
 });
