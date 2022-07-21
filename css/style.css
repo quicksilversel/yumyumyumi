@@ -32,14 +32,47 @@ a:hover {
     margin-bottom : 2%;
     font-family: "Yantramanav", sans-serif;
     text-transform: uppercase;
-    font-size: 50px;
+    font-size: 3rem;
+}
+
+/* search Bar */
+
+.search-input {
+    width: 85%;
+    padding: 12px 24px;
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
+    color: #575756;
+    background-color: transparent;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 98% center;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.search-input:hover, .search-input:focus {
+    padding: 12px 0;
+    outline: 0;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #575756;
+    border-radius: 0;
+    background-position: 100% center;
 }
 
 /* category filters */
 
-#searchRecipe {
-    width: 50%;
-}
 
 .filter {
     text-transform: capitalize;
@@ -57,7 +90,7 @@ a:hover {
     font-size: 0.9rem;
     font-weight: 600;
     outline: none;
-    padding: 5px 23px;
+    padding: 0.313rem 1.438rem;
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -84,7 +117,7 @@ a:hover {
 }
 
 .condition {
-    display: inline-block;
+    background-color: var(--background);
 }
 
 /* cards */
@@ -134,7 +167,7 @@ div.cards {
 .cards .card img {
     width: 298px;
 }
-.cards .card .card__image-holder {
+.cards .card .card-image-holder {
     height: 0;
     padding-bottom: 75%;
 }
@@ -146,7 +179,7 @@ div.cards {
 }
 
 .cards .card div.card-title .summary {
-    height: 80px;
+    height: 40px;
     overflow-y: auto;
 }
 
@@ -156,36 +189,36 @@ div.cards {
 }
 
 .cards .card div.card-title a.toggle-info {
-    border-radius: 32px;
-    height: 32px;
+    border-radius: 2rem;
+    height: 2rem;
     padding: 0;
     position: absolute;
-    right: 15px;
-    top: 10px;
-    width: 32px;
+    right: 0.938rem;
+    top: 0.75rem;
+    width: 2rem;
 }
 .cards .card div.card-title a.toggle-info span {
     background: var(--card);
     display: block;
-    height: 2px;
+    height: 0.125rem;
     position: absolute;
-    top: 16px;
+    top: 1rem;
     transition: all 0.15s 0s ease-out;
-    width: 12px;
+    width: 0.75rem;
 }
 .cards .card div.card-title a.toggle-info span.left {
-    right: 13px;
+    right: 0.813rem;
     transform: rotate(45deg);
 }
 .cards .card div.card-title a.toggle-info span.right {
-    left: 13px;
+    left: 0.813rem;
     transform: rotate(-45deg);
     }
 .cards div.card div.card-title h2 {
     width: 88%;
     height: 23px;
-    overflow-y: auto;
-    font-size: 1.2rem;
+    overflow-y: hidden;
+    font-size: 1.1rem;
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -198,8 +231,15 @@ div.cards {
 
 .cards div.card div.card-title small {
     display: block;
-    font-size: 12px;
+    font-size: 0.7rem;
     letter-spacing: -0.025em;
+}
+
+.cards div.card div.card-title .time {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .cards .card .recipeLink {
@@ -228,7 +268,6 @@ div.cards {
     touch-action: manipulation;
 }
 
-
 .cards div.card .recipeLink:hover {
   background-color: rgb(2, 116, 216, .8)
 }
@@ -250,6 +289,14 @@ div.cards {
     transform-origin: top;
     transform: rotateX(-90deg);
     opacity: 0;
+}
+
+.cards div.card div.card-flap h3 {
+    font-family: Georgia, sans-serif;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -.5px;
+    border-bottom: 1px solid var(--border);
 }
 
 .cards div.card.show div.card-flap {
@@ -276,42 +323,28 @@ div.cards.showing div.card {
     opacity: 1 !important;
     transform: scale(1) !important;
 }
-
 .cards div.card.show h3 {
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: bold;
     padding: 0.5rem;
     border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
 }
-
-.cards div.card.show .card-description.recipe {
-    overflow-y: auto;
-    max-height: 300px;
-}
-
 .cards div.card.show .card-description.ingredient {
+    font-size: 0.75rem;
     overflow-y: auto;
-    max-height: 150px;
+    max-height: 7rem;
 }
-
-.cards div.card.show .card-description.point {
-    overflow-y: auto;
-    max-height: 100px;
-}
-
-
 .cards div.card.show div.card-title a.toggle-info {
     background: #ff6666 !important;
 }
 .cards div.card.show div.card-title a.toggle-info span {
-    top: 15px;
+    top: 0.938rem;
 }
 .cards div.card.show div.card-title a.toggle-info span.left {
-    right: 9px;
+    right: 0.563rem;
 }
 .cards div.card.show div.card-title a.toggle-info span.right {
-    left: 9px;
+    left: 0.563rem;
 }
 .cards div.card.show div.card-flap {
     background: var(--card);
@@ -333,12 +366,12 @@ div.cards.showing div.card {
 }
 
 .recipe-wrapper .recipe-title {
-    font-size: 25px;
+    font-size: 1.5rem;
     font-weight: bolder;
 }
 
 .recipe-details-wrapper {
-    font-size: 14px;
+    font-size: 0.875rem;
     border-bottom: 1px solid var(--border);
 }
 
@@ -350,7 +383,10 @@ div.cards.showing div.card {
 
 .recipe-description h3 {
     font-size: 20px;
-    font-weight: bolder;
+    font-family: Georgia, sans-serif;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -.5px;
     margin: 5px;
     margin-bottom: 1rem;
 }
@@ -383,9 +419,10 @@ div.cards.showing div.card {
         z-index: 1;
     }
     .cards div.card div.card-title h2 {
-        font-size: 0.9rem;
-        height: 2.2rem;
-        overflow-y: auto;
+        width: 100%;
+        font-size: 0.8rem;
+        height: 1.9rem;
+        overflow: hidden;
     }
     .cards .card img {
         width: 38.5vw;
@@ -394,12 +431,8 @@ div.cards.showing div.card {
         display: none;
     }
     .cards .card div.card-title a.toggle-info {
-        border-radius: 32px;
-        height: 32px;
-        padding: 0;
         position: absolute;
-        right: 15px;
-        top: 45px;
-        width: 32px;
+        right: 0.7rem;
+        top: 2.7rem;
     }
 }

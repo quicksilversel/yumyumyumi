@@ -16,7 +16,7 @@
     <!-- css -->
     <link href="css/style.css" type="text/css", rel="stylesheet">
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/65a65454b1.js" crossorigin="anonymous"></script>
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
@@ -30,11 +30,15 @@
         </a>        
         <div class="text-center filter">
             <!-- search bar -->
-            <input id="searchRecipe" type="text" placeholder="検索">
+            <div class="search-container">
+                <input class="search-input" type="text" placeholder="料理名・食材でレシピを探す">
+            </div>
             <!-- filters -->
-            <div class="row mt-4">
-                <div class="col">
-                    <div class="condition" id="categories">
+            <div class="container" style="width:85%">
+                <div class="row mt-4 filter-wrapper text-center">
+                    <div class="col">
+                        <div class="condition mt-1" id="categories">
+                        </div>
                     </div>
                 </div>
             </div>

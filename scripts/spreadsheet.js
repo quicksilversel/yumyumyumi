@@ -52,12 +52,27 @@ function addCategories(categories){
             <button data-id="${categories[i]}" data-type="category" class="stat category my-1" role="button">#${categories[i]}</button>
         `)
     }
+}
 
+// get all categories from spreadsheet and dynamically add to page 
+function addDurations(){
+    durations = [10,20,30,40,50,60];
+	for (var i = 0, len = durations.length; i < len; i++) {
+        $(".condition#duration").append(`
+            <button data-id="${durations[i]}" data-type="duration" class="stat duration my-1" role="button">${durations[i]}分以下</button>
+        `)
+    }
 }
 
 // preserve line break from cells
 function lineBreak(text){
     text = text.replace(/\n/g, '<br>');
+    return text;
+}
+
+// strip non-numeric value from duration
+function processDuration(text){
+    text = text.replace(/\D/g,'');
     return text;
 }
 
@@ -82,19 +97,26 @@ function processRows(json) {
 
         if(data[i].title != ""){
 
+            // preserve line breaks
             ingredient = lineBreak(data[i].ingredient);
             recipe = lineBreak(data[i].recipe);
             point = lineBreak(data[i].point);
+
+            // used for creating list of categories
             category = data[i].category.split(",");
-            categories.push(category)
+            categories.push(category);
     
-            hastags = processCategories(data[i].category)
+            // processed category list with #
+            hashtags = processCategories(data[i].category);
+
+            // process duration by removing non-numeric values
+            duration = processDuration(data[i].time);
     
             // insert recipe to page
             $(".cards").append(
-            `<div class="card" data-category="${data[i].category}">
+            `<div class="card" data-category="${data[i].category}" data-duration="${duration}">
                 <div class="card__image-holder">
-                    <img class="card__image" src="${data[i].image}" alt="Card image cap"> 
+                    <img class="card__image" src="${data[i].image}" alt="image"> 
                 </div>
                 <div class="card-title">
                     <a href="#" class="toggle-info btn">
@@ -104,17 +126,13 @@ function processRows(json) {
                     <h2 class="mt-1">
                     <a href="recipe.html?id=${data[i].id}">${data[i].title}</a>
                     </h2>
-                    <small class="mt-2">${data[i].time}<small>
-                    <p class="hashtags mt-1">
-                        ${hastags}
-                    </p>
+                    <small class="time mt-2"><i class="fa fa-clock mr-2"></i>${data[i].time}<small>
                     <p class="summary mt-1">
                         ${data[i].summary}
                     </p>
-                    <a href="recipe.html?id=${data[i].id}" class="recipeLink text-center mt-2">レシピを見る</a>
                 </div>
                 <div class="card-flap flap2">
-                    <h3>材料</h3>
+                    <h3>Ingredients</h3>
                     <div class="card-description ingredient">
                         ${ingredient}
                     </div>
@@ -125,5 +143,5 @@ function processRows(json) {
 	};
     // add category to filters
     addCategories(categories);
-    console.log(data)
+    addDurations();
 }

@@ -1,25 +1,46 @@
 $(document).ready(function() {
 
 	// search
-	$("#searchRecipe").on("keyup", function() {
+	$(".search-input").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
 		$(".cards .card").filter(function() {
 		  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		});
 	});
 
-	// filter 
+	// toggle category filter 
+	$('.categoryToggler').click(function(e){
+		var x = $(this).parent();
+		if (x.hasClass('show')){
+			x.removeClass('show');
+		}
+		else{
+			x.addClass('show')
+		}
+	})
+
+	// toggle duration filter 
+	$('.durationToggler').click(function(e){
+		var x = $(this).parent();
+		if (x.hasClass('show')){
+			x.removeClass('show');
+		}
+		else{
+			x.addClass('show')
+		}
+	})
+
 	$('.condition').on('click', '.stat', function() {
 		$(this).toggleClass('active');
-		var $stats = $('.condition .active')
+		var $categories = $('#categories .active')
 		var $items = $('.cards .card');
 
-		/* filter items that contain specific substring */
+		// 1. filtering categories : filter items that contain specific substring
 		$items.show();
-		if ($stats.length == 0)
+		if ($categories.length == 0)
 		return;
 	
-		$stats.each(function() {
+		$categories.each(function() {
 		var $stat = $(this);
 		$items.filter(function() {
 			return $(this).data($stat.data('type')).indexOf($stat.data('id')) < 0;
@@ -38,8 +59,8 @@ $(document).ready(function() {
 			isShowing = true
 		}
 
+		// a card is already in view
 		if ($("div.cards").hasClass("showing")) {
-			// a card is already in view
 			$("div.card.show").removeClass("show");
 			if (isShowing) {
 				// hide card
