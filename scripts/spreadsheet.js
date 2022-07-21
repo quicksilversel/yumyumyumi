@@ -100,7 +100,7 @@ function processRows(json) {
                     <span class="right"></span>
                 </a>
                 <h2 class="mt-1">
-                    ${data[i].title}
+                <a href="recipe.html?id=${data[i].id}">${data[i].title}</a>
                 </h2>
                 <small class="mt-2">${data[i].time}<small>
                 <p class="hashtags mt-1">
