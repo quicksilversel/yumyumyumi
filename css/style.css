@@ -54,7 +54,8 @@ a:hover {
     border-radius: 2px;
     color: #222222;
     cursor: pointer;
-    font-weight: 400;
+    font-size: 0.9rem;
+    font-weight: 600;
     outline: none;
     padding: 5px 23px;
     position: relative;
@@ -87,6 +88,7 @@ a:hover {
 }
 
 /* cards */
+
 .cards a.btn {
     background: var(--accent);
     border-radius: 4px;
@@ -112,7 +114,7 @@ a:hover {
 }
 
 div.cards {
-    margin: 40px auto;
+    margin: 2rem auto;
     max-width: 960px;
     text-align: center;
     color: var(--primary-text);
@@ -122,18 +124,15 @@ div.cards {
     background: var(--card);
     display: inline-block;
     margin: 8px;
-    max-width: 300px;
+    width: 300px;
     perspective: 1000;
     position: relative;
     text-align: left;
     transition: all 0.3s 0s ease-in;
-    width: 300px;
     z-index: 1;
 }
 .cards .card img {
     width: 298px;
-    height: 225px;
-    overflow: hidden;
 }
 .cards .card .card__image-holder {
     height: 0;
@@ -150,6 +149,12 @@ div.cards {
     height: 80px;
     overflow-y: auto;
 }
+
+.cards .card div.card-title .hashtags {
+    height: 2.5rem;
+    overflow-y: auto;
+}
+
 .cards .card div.card-title a.toggle-info {
     border-radius: 32px;
     height: 32px;
@@ -179,8 +184,8 @@ div.cards {
 .cards div.card div.card-title h2 {
     width: 88%;
     height: 23px;
-    overflow-x: auto;
-    font-size: 18px;
+    overflow-y: auto;
+    font-size: 1.2rem;
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -197,7 +202,7 @@ div.cards {
     letter-spacing: -0.025em;
 }
 
-.cards div.card .recipeLink {
+.cards .card .recipeLink {
     background-color: var(--accent);
     border-radius: 8px;
     border-style: none;
@@ -206,7 +211,7 @@ div.cards {
     cursor: pointer;
     display: inline-block;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 0.8rem;
     height: 40px;
     line-height: 20px;
     list-style: none;
@@ -363,4 +368,38 @@ div.cards.showing div.card {
     .recipe-description-left {
 		border: none;
 	}
+    .filter button {
+        font-size: 0.7rem;
+    }
+    .cards .card {
+        background: var(--card);
+        display: inline-block;
+        width: 39vw;
+        margin: 5px;
+        perspective: 1000;
+        position: relative;
+        text-align: left;
+        transition: all 0.3s 0s ease-in;
+        z-index: 1;
+    }
+    .cards div.card div.card-title h2 {
+        font-size: 0.9rem;
+        height: 2.2rem;
+        overflow-y: auto;
+    }
+    .cards .card img {
+        width: 38.5vw;
+    }
+    .cards .card .summary, .cards .card .hashtags, .cards .card .recipeLink {
+        display: none;
+    }
+    .cards .card div.card-title a.toggle-info {
+        border-radius: 32px;
+        height: 32px;
+        padding: 0;
+        position: absolute;
+        right: 15px;
+        top: 45px;
+        width: 32px;
+    }
 }
