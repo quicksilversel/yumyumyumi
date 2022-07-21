@@ -111,7 +111,7 @@ function processRows(json) {
                 </p>
                 <a href="recipe.html?id=${data[i].id}" class="recipeLink mt-2">レシピを見る</a>
             </div>
-            <div class="card-flap flap1">
+            <div class="card-flap flap2">
                 <h3>材料</h3>
                 <div class="card-description ingredient">
                     ${ingredient}

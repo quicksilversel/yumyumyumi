@@ -236,12 +236,17 @@ div.cards {
     padding: 10px 15px 20px;
     text-align: center;
 }
-.cards  div.card div.card-flap {
+.cards div.card div.card-flap {
     background: var(--card);
     position: absolute;
     width: 100%;
     transform-origin: top;
     transform: rotateX(-90deg);
+    opacity: 0;
+}
+
+.cards div.card.show div.card-flap {
+    opacity: 1;
 }
 .cards div.card div.flap1 {
     transition: all 0.3s 0.3s ease-out;
