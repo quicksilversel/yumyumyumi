@@ -351,3 +351,9 @@ div.cards.showing div.card {
 .recipe-description-left {
     border-right: 1px solid var(--border);
 }
+
+@media screen and (max-width: 768px) {
+    .recipe-description-left {
+		border: none;
+	}
+}
