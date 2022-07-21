@@ -131,7 +131,9 @@ div.cards {
     z-index: 1;
 }
 .cards .card img {
-    max-width: 300px;
+    width: 298px;
+    height: 225px;
+    overflow: hidden;
 }
 .cards .card .card__image-holder {
     height: 0;

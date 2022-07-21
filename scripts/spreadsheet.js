@@ -80,46 +80,50 @@ function processRows(json) {
     
 	for (var i = 0, len = data.length; i < len; i++) {
 
-        ingredient = lineBreak(data[i].ingredient);
-        recipe = lineBreak(data[i].recipe);
-        point = lineBreak(data[i].point);
-        category = data[i].category.split(",");
-        categories.push(category)
+        if(data[i].title != ""){
 
-        hastags = processCategories(data[i].category)
-
-        // insert recipe to page
-		$(".cards").append(
-        `<div class="card" data-category="${data[i].category}">
-            <div class="card__image-holder">
-                <img class="card__image" src="${data[i].image}" alt="Card image cap"> 
-            </div>
-            <div class="card-title">
-                <a href="#" class="toggle-info btn">
-                    <span class="left"></span>
-                    <span class="right"></span>
-                </a>
-                <h2 class="mt-1">
-                <a href="recipe.html?id=${data[i].id}">${data[i].title}</a>
-                </h2>
-                <small class="mt-2">${data[i].time}<small>
-                <p class="hashtags mt-1">
-                    ${hastags}
-                </p>
-                <p class="summary mt-1">
-                    ${data[i].summary}
-                </p>
-                <a href="recipe.html?id=${data[i].id}" class="recipeLink mt-2">レシピを見る</a>
-            </div>
-            <div class="card-flap flap2">
-                <h3>材料</h3>
-                <div class="card-description ingredient">
-                    ${ingredient}
+            ingredient = lineBreak(data[i].ingredient);
+            recipe = lineBreak(data[i].recipe);
+            point = lineBreak(data[i].point);
+            category = data[i].category.split(",");
+            categories.push(category)
+    
+            hastags = processCategories(data[i].category)
+    
+            // insert recipe to page
+            $(".cards").append(
+            `<div class="card" data-category="${data[i].category}">
+                <div class="card__image-holder">
+                    <img class="card__image" src="${data[i].image}" alt="Card image cap"> 
                 </div>
-            </div>
-        </div>`
-        )
+                <div class="card-title">
+                    <a href="#" class="toggle-info btn">
+                        <span class="left"></span>
+                        <span class="right"></span>
+                    </a>
+                    <h2 class="mt-1">
+                    <a href="recipe.html?id=${data[i].id}">${data[i].title}</a>
+                    </h2>
+                    <small class="mt-2">${data[i].time}<small>
+                    <p class="hashtags mt-1">
+                        ${hastags}
+                    </p>
+                    <p class="summary mt-1">
+                        ${data[i].summary}
+                    </p>
+                    <a href="recipe.html?id=${data[i].id}" class="recipeLink mt-2">レシピを見る</a>
+                </div>
+                <div class="card-flap flap2">
+                    <h3>材料</h3>
+                    <div class="card-description ingredient">
+                        ${ingredient}
+                    </div>
+                </div>
+            </div>`
+            )
+        }
 	};
     // add category to filters
     addCategories(categories);
+    console.log(data)
 }
