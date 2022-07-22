@@ -73,15 +73,27 @@ a:hover {
 
 /* category filters */
 
+.filter-wrapper {
+    width: 85%;
+}
+
+#categories, #duration {
+    display: none;
+}
 
 .show #categories, .show #duration {
     display: block;
+}
+
+.durationToggler, .categoryToggler, .bookmarkToggler {
+    width: 100%;
 }
 
 .durationToggler::after, .categoryToggler::after {
     font-family: "Font Awesome 5 Free"; 
     content: "\f078";
     margin-left: 0.4rem;
+    float: right;
 }
 
 .show .durationToggler::after, .show .categoryToggler::after {

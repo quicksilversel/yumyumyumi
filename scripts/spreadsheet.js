@@ -114,7 +114,7 @@ function processRows(json) {
     
             // insert recipe to page
             $(".cards").append(
-            `<div class="card" data-category="${data[i].category}" data-duration="${duration}">
+            `<div class="card" data-id="${data[i].id}" data-category="${data[i].category}" data-duration="${duration}">
                 <div class="card__image-holder">
                     <div class="image-wrapper">
                         <div class="bookmarker">
