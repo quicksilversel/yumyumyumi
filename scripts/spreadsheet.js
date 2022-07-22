@@ -116,8 +116,16 @@ function processRows(json) {
             $(".cards").append(
             `<div class="card" data-category="${data[i].category}" data-duration="${duration}">
                 <div class="card__image-holder">
-                    <img class="card__image" src="${data[i].image}" alt="image"> 
-                </div>
+                    <div class="image-wrapper">
+                        <div class="bookmarker">
+                            <input type="checkbox" class="checkbox-theme" id="checkbox-theme${data[i].id}">
+                            <label for="checkbox-theme${data[i].id}" id="${data[i].id}" class="fas checkbox-label m-2"></label>
+                        </div>
+                        <a href="recipe.html?id=${data[i].id}">
+                            <img class="card__image" src="${data[i].image}" alt="image">
+                        </a>
+                    </div>
+                </div>  
                 <div class="card-title">
                     <a href="#" class="toggle-info btn">
                         <span class="left"></span>
@@ -139,6 +147,14 @@ function processRows(json) {
                 </div>
             </div>`
             )
+
+            // check for bookmarks
+            const bookmark = document.querySelector(`#checkbox-theme${data[i].id}`);
+            bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+            if(bookmarks.indexOf(data[i].id) >= 0){
+                bookmark.checked = true;
+            }
         }
 	};
     // add category to filters

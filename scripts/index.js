@@ -29,7 +29,8 @@ $(document).ready(function() {
 			x.addClass('show')
 		}
 	})
-
+	
+	// filtering items
 	$('.condition').on('click', '.stat', function() {
 		$(this).toggleClass('active');
 		var $categories = $('#categories .active')
@@ -81,4 +82,21 @@ $(document).ready(function() {
 			zindex++;
 		}
   	});
+
+	// bookmark (stores id to array in JSON)
+	$("div.cards").on("click", ".bookmarker label", function(e){
+		const id = parseInt($(this).attr('id'));
+
+		var bookmarks = []
+		bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+		if(bookmarks.indexOf(id) == -1){
+			bookmarks.push(id);
+		}
+		else{
+			bookmarks.splice(bookmarks.indexOf(id), 1);
+		}
+		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+		console.log(localStorage.getItem('bookmarks'));
+	});
 });

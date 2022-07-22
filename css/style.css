@@ -74,6 +74,22 @@ a:hover {
 /* category filters */
 
 
+.show #categories, .show #duration {
+    display: block;
+}
+
+.durationToggler::after, .categoryToggler::after {
+    font-family: "Font Awesome 5 Free"; 
+    content: "\f078";
+    margin-left: 0.4rem;
+}
+
+.show .durationToggler::after, .show .categoryToggler::after {
+    font-family: "Font Awesome 5 Free"; 
+    content: "\f077";
+    margin-left: 0.4rem;
+}
+
 .filter {
     text-transform: capitalize;
     -moz-user-select: -moz-none;
@@ -171,6 +187,43 @@ div.cards {
     height: 0;
     padding-bottom: 75%;
 }
+
+/* bookmark toggler */
+
+.image-wrapper {
+    position: relative;
+}
+.bookmarker {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: right;
+}
+
+.checkbox-label {
+    font-size: 1.2rem;
+}
+
+.checkbox-theme {
+    display: none;
+}
+
+/* not bookmarked */
+.checkbox-theme + label:before {
+    content: "\f004";
+    cursor: pointer;
+    color: white;
+}
+
+/* bookmarked */
+.checkbox-theme:checked + label:before {
+    content: "\f004";
+    cursor: pointer;
+    color: red;
+}
+
 .cards .card div.card-title {
     background: var(--card);
     padding: 6px 15px 10px;
