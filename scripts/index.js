@@ -39,6 +39,7 @@ $(document).ready(function() {
 		// remove other toggles
 		$('.bookmarkToggler').removeClass('active');
 		$('.duration').removeClass('active');
+		$('.durationToggler-wrapper').removeClass('show');
 
 		var $categories = $('#categories .active')
 		var $items = $('.cards .card');
@@ -62,7 +63,7 @@ $(document).ready(function() {
 		// remove other toggles
 		$('.bookmarkToggler').removeClass('active');
 		$('.category').removeClass('active');
-
+		$('.categoryToggler-wrapper').removeClass('show');
 
 		$(this).toggleClass('active');
 		var $durations = $('#duration .active')
