@@ -92,6 +92,8 @@ $(document).ready(function() {
 		return;
 
 		// hide other filters
+		$('.category').removeClass('active');
+		$('.duration').removeClass('active');
 		$('.categoryToggler-wrapper').removeClass('show');
 		$('.durationToggler-wrapper').removeClass('show');
 
