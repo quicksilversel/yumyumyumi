@@ -36,8 +36,9 @@ $(document).ready(function() {
 	$('.condition').on('click', '.category', function() {
 		$(this).toggleClass('active');
 
-		// remove bookmark toggle
+		// remove other toggles
 		$('.bookmarkToggler').removeClass('active');
+		$('.duration').removeClass('active');
 
 		var $categories = $('#categories .active')
 		var $items = $('.cards .card');
@@ -58,8 +59,10 @@ $(document).ready(function() {
 	$('.condition').on('click', '.duration', function() {
 		$('.duration').removeClass('active');
 
-		// remove bookmark toggle
+		// remove other toggles
 		$('.bookmarkToggler').removeClass('active');
+		$('.category').removeClass('active');
+
 
 		$(this).toggleClass('active');
 		var $durations = $('#duration .active')
