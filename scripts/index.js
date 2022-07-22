@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	// search
+	// searchbar
 	$(".search-input").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
 		$(".cards .card").filter(function() {
@@ -8,8 +8,11 @@ $(document).ready(function() {
 		});
 	});
 
-	// toggle category filter 
+	// toggle category filter on click
 	$('.categoryToggler').click(function(e){
+
+		// hide other toggles
+		$('.durationToggler-wrapper').removeClass('show');
 
 		var x = $(this).parent();
 		if (x.hasClass('show')){
@@ -20,8 +23,11 @@ $(document).ready(function() {
 		}
 	})
 
-	// toggle duration filter 
+	// toggle duration filter on click
 	$('.durationToggler').click(function(e){
+
+		// hide other toggles
+		$('.categoryToggler-wrapper').removeClass('show');
 
 		var x = $(this).parent();
 		if (x.hasClass('show')){
@@ -56,7 +62,7 @@ $(document).ready(function() {
 		}); 
 	});
 
-	// filtering durations : filter items that contain specific substring
+	// filtering durations : filter items that are below specific duration
 	$('.condition').on('click', '.duration', function() {
 		$('.duration').removeClass('active');
 
@@ -81,7 +87,7 @@ $(document).ready(function() {
 		}); 
 	});
 
-	// filtering bookmarks : filter items that contain specific substring
+	// filtering bookmarks : show only bookmarked items
 	$('.bookmarkToggler').click(function(e){
 		$(this).toggleClass('active');
 
@@ -91,16 +97,17 @@ $(document).ready(function() {
 		if (!$(this).hasClass('active'))
 		return;
 
-		// hide other filters
+		// hide other filters and remove toggles
 		$('.category').removeClass('active');
 		$('.duration').removeClass('active');
 		$('.categoryToggler-wrapper').removeClass('show');
 		$('.durationToggler-wrapper').removeClass('show');
 
-		// if bookmark button is clicked, show only items in bookmark
+		// if bookmark is checked, show only items in bookmark
 		var bookmarks = [];
 		bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
 		
+		// if there are no bookmarks
 		if (bookmarks.length == 0){
 			alert("お気に入りが登録されていません")
 			$(this).removeClass('active');
@@ -115,7 +122,8 @@ $(document).ready(function() {
 
 	});
 
-	// cards
+	// card flipping animation
+
 	var zindex = 10;
   
   	$("div.cards").on("click", ".toggle-info", function(e){
@@ -126,7 +134,7 @@ $(document).ready(function() {
 			isShowing = true
 		}
 
-		// a card is already in view
+		// if a card is already in view
 		if ($("div.cards").hasClass("showing")) {
 			$("div.card.show").removeClass("show");
 			if (isShowing) {
@@ -149,7 +157,7 @@ $(document).ready(function() {
 		}
   	});
 
-	// bookmark (stores id to array in JSON)
+	// bookmark (stores id of bookmarked recipe in array and store in JSON format)
 	$("div.cards").on("click", ".bookmarker label", function(e){
 		const id = parseInt($(this).attr('id'));
 
@@ -162,6 +170,7 @@ $(document).ready(function() {
 		else{
 			bookmarks.splice(bookmarks.indexOf(id), 1);
 		}
+
 		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 		console.log(localStorage.getItem('bookmarks'));
 	});

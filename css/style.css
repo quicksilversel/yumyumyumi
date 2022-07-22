@@ -7,35 +7,32 @@
     --secondary-text: #212121;
     --accent: #0275d8;
 }
-
 body {
     font-family: "Roboto", sans-serif;
     background-color: var(--background);
     color: var(--primary-text);
     text-decoration: none;
 }
-
 a {
     text-decoration: none;
     color: var(--primary-text);
 }
-
 a:hover {
     text-decoration: none;
     color: var(--primary-text)
 }
 
-/* header */
+/********************** HEADER **********************/
 
 #header {
-    margin-top: 2%;
-    margin-bottom : 2%;
+    margin-top: 1.2rem;
+    margin-bottom : 1.2rem;
     font-family: "Yantramanav", sans-serif;
     text-transform: uppercase;
     font-size: 3rem;
 }
 
-/* search Bar */
+/********************** SEARCHBAR **********************/
 
 .search-input {
     width: 85%;
@@ -61,7 +58,6 @@ a:hover {
     backface-visibility: hidden;
     transform-style: preserve-3d;
 }
-
 .search-input:hover, .search-input:focus {
     padding: 12px 0;
     outline: 0;
@@ -71,16 +67,15 @@ a:hover {
     background-position: 100% center;
 }
 
-/* category filters */
+/********************** FILTERS **********************/
 
 .filter-wrapper {
     width: 85%;
 }
-
+/* togglers */
 #categories, #duration {
     display: none;
 }
-
 .show #categories, .show #duration {
     display: block;
 }
@@ -88,27 +83,24 @@ a:hover {
 .durationToggler, .categoryToggler, .bookmarkToggler {
     width: 100%;
 }
-
 .durationToggler::after, .categoryToggler::after {
     font-family: "Font Awesome 5 Free"; 
     content: "\f078";
     margin-left: 0.4rem;
     float: right;
 }
-
 .show .durationToggler::after, .show .categoryToggler::after {
     font-family: "Font Awesome 5 Free"; 
     content: "\f077";
     margin-left: 0.4rem;
 }
-
+/* buttons */
 .filter {
     text-transform: capitalize;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
     -webkit-user-select: none;
 }
-
 .filter button {
     background-color: var(--card);
     border: 1px solid var(--border);
@@ -127,29 +119,42 @@ a:hover {
     user-select: none;
     -webkit-user-select: none;
 }
-
 .filter button:hover {
     border-color: #000000;
     color: black;
 }
-
 .filter button:focus-visible {
     box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
     transition: box-shadow .2s;
 }
-
 .filter button.active {
     border-color: var(--primary-text);
     transform: scale(.96);
     cursor: pointer;
 }
-
 .condition {
     background-color: var(--background);
 }
 
-/* cards */
+/********************** CARDS **********************/
 
+div.cards {
+    margin: 2rem auto;
+    max-width: 960px;
+    text-align: center;
+    color: var(--primary-text);
+}
+.cards .card {
+    background: var(--card);
+    display: inline-block;
+    margin: 8px;
+    width: 300px;
+    perspective: 1000;
+    position: relative;
+    text-align: left;
+    transition: all 0.3s 0s ease-in;
+    z-index: 1;
+}
 .cards a.btn {
     background: var(--accent);
     border-radius: 4px;
@@ -173,25 +178,7 @@ a:hover {
     transform: translate3d(0, 1px, 0);
     transition: all 0.025s 0s ease-out;
 }
-
-div.cards {
-    margin: 2rem auto;
-    max-width: 960px;
-    text-align: center;
-    color: var(--primary-text);
-}
-
-.cards .card {
-    background: var(--card);
-    display: inline-block;
-    margin: 8px;
-    width: 300px;
-    perspective: 1000;
-    position: relative;
-    text-align: left;
-    transition: all 0.3s 0s ease-in;
-    z-index: 1;
-}
+/* card image */
 .cards .card img {
     width: 298px;
 }
@@ -199,9 +186,7 @@ div.cards {
     height: 0;
     padding-bottom: 75%;
 }
-
 /* bookmark toggler */
-
 .image-wrapper {
     position: relative;
 }
@@ -213,46 +198,65 @@ div.cards {
     z-index: 1000;
     text-align: right;
 }
-
 .checkbox-label {
     font-size: 1.2rem;
 }
-
 .checkbox-theme {
     display: none;
 }
-
 /* not bookmarked */
 .checkbox-theme + label:before {
     content: "\f004";
     cursor: pointer;
     color: white;
 }
-
 /* bookmarked */
 .checkbox-theme:checked + label:before {
     content: "\f004";
     cursor: pointer;
     color: red;
 }
-
+/* title */
 .cards .card div.card-title {
     background: var(--card);
     padding: 6px 15px 10px;
     position: relative;
     z-index: 0;
 }
-
+.cards div.card div.card-title small {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: -0.025em;
+}
+.cards div.card div.card-title .time {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.cards div.card div.card-title h2 {
+    width: 88%;
+    height: 23px;
+    overflow-y: hidden;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.cards div.card div.card-title p {
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
 .cards .card div.card-title .summary {
     height: 40px;
     overflow-y: auto;
 }
-
 .cards .card div.card-title .hashtags {
     height: 2.5rem;
     overflow-y: auto;
 }
-
+/* toggler */
 .cards .card div.card-title a.toggle-info {
     border-radius: 2rem;
     height: 2rem;
@@ -279,64 +283,7 @@ div.cards {
     left: 0.813rem;
     transform: rotate(-45deg);
     }
-.cards div.card div.card-title h2 {
-    width: 88%;
-    height: 23px;
-    overflow-y: hidden;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-}
-.cards div.card div.card-title p {
-    font-size: 13px;
-    margin: 0;
-    padding: 0;
-}
-
-.cards div.card div.card-title small {
-    display: block;
-    font-size: 0.7rem;
-    letter-spacing: -0.025em;
-}
-
-.cards div.card div.card-title .time {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.cards .card .recipeLink {
-    background-color: var(--accent);
-    border-radius: 8px;
-    border-style: none;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-block;
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 0.8rem;
-    height: 40px;
-    line-height: 20px;
-    list-style: none;
-    margin: 0;
-    outline: none;
-    padding: 10px 16px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: color 100ms;
-    vertical-align: baseline;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-
-.cards div.card .recipeLink:hover {
-  background-color: rgb(2, 116, 216, .8)
-}
-
+/* description */
 .cards div.card div.card-description {
     padding: 0 15px 10px;
     position: relative;
@@ -347,6 +294,7 @@ div.cards {
     padding: 10px 15px 20px;
     text-align: center;
 }
+/* layers to be flipped */
 .cards div.card div.card-flap {
     background: var(--card);
     position: absolute;
@@ -355,7 +303,6 @@ div.cards {
     transform: rotateX(-90deg);
     opacity: 0;
 }
-
 .cards div.card div.card-flap h3 {
     font-family: Georgia, sans-serif;
     font-weight: 700;
@@ -363,7 +310,6 @@ div.cards {
     letter-spacing: -.5px;
     border-bottom: 1px solid var(--border);
 }
-
 .cards div.card.show div.card-flap {
     opacity: 1;
 }
@@ -422,30 +368,24 @@ div.cards.showing div.card {
     transition: all 0.3s 0.2s ease-out;
 }
 
-/************** RECIPE PAGE **************/
+/********************** RECIPE DETAILS PAGE **********************/
 
 .recipe-wrapper {
     font-family: "Roboto", sans-serif;
     background-color: var(--card);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
 .recipe-wrapper .recipe-title {
     font-size: 1.5rem;
     font-weight: bolder;
 }
-
 .recipe-details-wrapper {
     font-size: 0.875rem;
     border-bottom: 1px solid var(--border);
 }
-
 .recipe-image img {
     width: 300px;
-    height: 225px;
-    overflow: hidden;
 }
-
 .recipe-description h3 {
     font-size: 20px;
     font-family: Georgia, sans-serif;
@@ -455,15 +395,15 @@ div.cards.showing div.card {
     margin: 5px;
     margin-bottom: 1rem;
 }
-
 .recipe-description p {
     font-size: 13px;
     margin: 5px;
 }
-
 .recipe-description-left {
     border-right: 1px solid var(--border);
 }
+
+/********************** MOBILE VIEW **********************/
 
 @media screen and (max-width: 768px) {
     .recipe-description-left {

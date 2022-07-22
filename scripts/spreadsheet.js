@@ -54,7 +54,7 @@ function addCategories(categories){
     }
 }
 
-// get all categories from spreadsheet and dynamically add to page 
+// add durations to page
 function addDurations(){
     durations = [10,20,30,40,50,60];
 	for (var i = 0, len = durations.length; i < len; i++) {
@@ -148,7 +148,7 @@ function processRows(json) {
             </div>`
             )
 
-            // check for bookmarks
+            // preseve check for bookmarks
             const bookmark = document.querySelector(`#checkbox-theme${data[i].id}`);
             bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
 
@@ -157,7 +157,9 @@ function processRows(json) {
             }
         }
 	};
+
     // add category to filters
     addCategories(categories);
     addDurations();
+    
 }
