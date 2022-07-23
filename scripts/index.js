@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+	// scroll to top
+	$("#toTop").click(function () {
+		$("html, body").animate({scrollTop: 0}, 800);
+	 });
+
+	// only show scroll to top button if scrolled
+	$(window).scroll(function() {
+		if ($(this).scrollTop()) {
+			$('#toTop').fadeIn();
+		} else {
+			$('#toTop').fadeOut();
+		}
+	});
+
 	// searchbar
 	$(".search-input").on("keyup", function() {
 		var value = $(this).val().toLowerCase();

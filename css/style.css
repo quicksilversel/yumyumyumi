@@ -22,6 +22,43 @@ a:hover {
     color: var(--primary-text)
 }
 
+/********************** SCROLL TO TOP **********************/
+
+#toTop {
+    display: none;
+    z-index: 20;
+    position: fixed;
+    bottom: 1.3rem;
+    right: 1.3rem;
+    background-color: var(--card);
+    border: 0;
+    border-radius: 100%;
+    box-sizing: border-box;
+    color: var(--primary-text);
+    font-size: .875rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#toTop:hover {
+  background-color: rgb(249,250,251);
+}
+
+#toTop:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+#toTop:focus-visible {
+  box-shadow: none;
+}
+
 /********************** HEADER **********************/
 
 #header {
@@ -74,10 +111,15 @@ a:hover {
 }
 /* togglers */
 #categories, #duration {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    height: 0;
 }
 .show #categories, .show #duration {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    height: auto;
 }
 
 .durationToggler, .categoryToggler, .bookmarkToggler {
@@ -195,7 +237,7 @@ div.cards {
     top: 0px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    z-index: 10;
     text-align: right;
 }
 .checkbox-label {
