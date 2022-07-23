@@ -22,14 +22,10 @@ a:hover {
     color: var(--primary-text)
 }
 
-/********************** SCROLL TO TOP **********************/
+/********************** SCROLL TO TOP & GO BACK BUTTON **********************/
 
-#toTop {
-    display: none;
+#toTop, #goBack {
     z-index: 20;
-    position: fixed;
-    bottom: 1.3rem;
-    right: 1.3rem;
     background-color: var(--card);
     border: 0;
     border-radius: 100%;
@@ -45,17 +41,27 @@ a:hover {
     -webkit-user-select: none;
     touch-action: manipulation;
 }
-
-#toTop:hover {
+#toTop {
+    display: none;
+    position: fixed;
+    bottom: 1.3rem;
+    right: 1.3rem;
+}
+#goBack {
+    position: fixed;
+    top: 1.3rem;
+    left: 1.3rem;
+}
+#toTop:hover, #goBack:hover {
   background-color: rgb(249,250,251);
 }
 
-#toTop:focus {
+#toTop:focus, #goBack:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
-#toTop:focus-visible {
+#toTop:focus-visible, #goBack:focus-visible {
   box-shadow: none;
 }
 
