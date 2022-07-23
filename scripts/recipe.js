@@ -70,6 +70,10 @@ function processRows(json) {
 
     result = data[id-1]
 
+    // change title of page
+    document.title = result.title + "のレシピ";
+
+    // insert to HTML
     const recipe = lineBreak(result.recipe);
     const ingredients = lineBreak(result.ingredient);
     const point = lineBreak(result.point);
