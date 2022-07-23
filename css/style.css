@@ -454,6 +454,9 @@ div.cards.showing div.card {
 /********************** MOBILE VIEW **********************/
 
 @media screen and (max-width: 768px) {
+    #goBack {
+        display: none;
+    }
     .recipe-description-left {
 		border: none;
 	}
