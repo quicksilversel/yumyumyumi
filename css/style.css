@@ -68,11 +68,13 @@ a:hover {
 /********************** HEADER **********************/
 
 #header {
-    margin-top: 1.2rem;
-    margin-bottom : 1.2rem;
     font-family: "Yantramanav", sans-serif;
     text-transform: uppercase;
     font-size: 3rem;
+}
+
+#subtitle {
+    text-transform: capitalize;
 }
 
 /********************** SEARCHBAR **********************/
