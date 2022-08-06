@@ -14,13 +14,13 @@ function init() {
     fetch(url)
         .then(res => res.text())
         .then(rep => {
-            //Remove additional text and extract only JSON:
+            // remove additional text and extract only JSON:
             const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
             // console.log(rep)
  
             const colz = [];
             const tr = document.createElement('tr');
-            //Extract column labels
+            // extract column labels
             jsonData.table.cols.forEach((heading) => {
                 if (heading.label) {
                     let column = heading.label;
@@ -31,7 +31,7 @@ function init() {
                 }
             })
  
-            //extract row data:
+            // extract row data:
             jsonData.table.rows.forEach((rowData) => {
                 const row = {};
                 colz.forEach((ele, ind) => {
@@ -132,7 +132,7 @@ function processRows(json) {
                         <span class="right"></span>
                     </a>
                     <h2 class="mt-1">
-                    <a href="recipe.html?id=${data[i].id}">${data[i].title}</a>
+                    <a href="recipe.html?id=${data[i].id}"><span title="${data[i].title}">${data[i].title}</span></a>
                     </h2>
                     <small class="time mt-2"><i class="fa fa-clock mr-2"></i>${data[i].time}<small>
                     <p class="summary mt-1">
