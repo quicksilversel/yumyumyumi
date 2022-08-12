@@ -79,7 +79,7 @@ function processRows(json) {
     const point = lineBreak(result.point);
     const categories = processCategories(result.category);
 
-    $(".recipe-image").append(`<img src="${result.image}" alt="Card image cap">`)
+    $(".recipe-image").append(`<img src="${result.image}" alt="image">`)
     $(".recipe-title").append(`${result.title}`)
     $(".recipe-time").append(`${result.time}`)
     $(".recipe-category").append(`${categories}`)
