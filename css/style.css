@@ -7,6 +7,15 @@
     --secondary-text: #212121;
     --accent: #0275d8;
 }
+/* dark mode */
+[data-theme="dark"] {
+    --background: #121212;
+    --card: #181818;
+    --border: #212121;
+    --table-header : #212121;
+    --primary-text: #f6f6f6;
+    --secondary-text: #9CA3AF;
+}
 body {
     font-family: "Roboto", sans-serif;
     background-color: var(--background);
