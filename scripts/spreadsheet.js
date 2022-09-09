@@ -87,6 +87,16 @@ function processCategories(text){
     return result;
 }
 
+// process google drive images
+function processImages(url){
+
+    var id = url.substring(url.lastIndexOf('/')+1)
+
+    var newURL = "https://drive.google.com/uc?export=view&id=" + id;
+    
+    return newURL;
+}
+
 // dynamically add recipes to page
 function processRows(json) {
 
@@ -111,6 +121,9 @@ function processRows(json) {
 
             // process duration by removing non-numeric values
             duration = processDuration(data[i].time);
+
+            // create new url (modify google drive share link)
+            imageURL = processImages(data[i].image)
     
             // insert recipe to page
             $(".cards").append(
@@ -122,7 +135,7 @@ function processRows(json) {
                             <label for="checkbox-theme${data[i].id}" id="${data[i].id}" class="fas checkbox-label m-2"></label>
                         </div>
                         <a href="recipe.html?id=${data[i].id}">
-                            <img class="card__image" src="${data[i].image}" alt="image">
+                            <img class="card__image" src="${imageURL}" alt="image">
                         </a>
                     </div>
                 </div>  

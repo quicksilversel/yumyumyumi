@@ -60,6 +60,16 @@ function processCategories(text){
     return result;
 }
 
+// process google drive images
+function processImages(url){
+
+    var id = url.substring(url.lastIndexOf('/')+1)
+
+    var newURL = "https://drive.google.com/uc?export=view&id=" + id;
+    
+    return newURL;
+}
+
 // dynamically add recipes to page
 function processRows(json) {
 
@@ -78,8 +88,9 @@ function processRows(json) {
     const ingredients = lineBreak(result.ingredient);
     const point = lineBreak(result.point);
     const categories = processCategories(result.category);
+    const imageURL = processImages(result.image);
 
-    $(".recipe-image").append(`<img src="${result.image}" alt="image">`)
+    $(".recipe-image").append(`<img src="${imageURL}" alt="image">`)
     $(".recipe-title").append(`${result.title}`)
     $(".recipe-time").append(`${result.time}`)
     $(".recipe-category").append(`${categories}`)
