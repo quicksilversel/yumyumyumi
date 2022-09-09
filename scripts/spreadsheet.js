@@ -90,11 +90,18 @@ function processCategories(text){
 // process google drive images
 function processImages(url){
 
-    var id = url.substring(url.lastIndexOf('/')+1)
-
-    var newURL = "https://drive.google.com/uc?export=view&id=" + id;
+    if (url.includes("https://drive.google.com")){
+        var id = url.split("https://drive.google.com/file/d/")[1].split('/')[0];
+        id = id.split('/')[0];
     
-    return newURL;
+        console.log(id);
+    
+        var newURL = "https://drive.google.com/uc?export=view&id=" + id;
+        
+        return newURL;
+    }
+
+    else return url;
 }
 
 // dynamically add recipes to page
