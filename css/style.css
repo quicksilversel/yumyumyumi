@@ -76,6 +76,18 @@ a:hover {
 
 /********************** HEADER **********************/
 
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    background: var(--background);
+    width: 100%;
+    z-index: 1000;
+}
+
+.body-wrapper {
+    margin-top: 5.5rem;
+}
+
 #header {
     font-family: "Yantramanav", sans-serif;
     text-transform: uppercase;
